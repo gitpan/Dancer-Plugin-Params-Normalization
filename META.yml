@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name:               Dancer-Plugin-Params-Normalization
-version:            0.1
+version:            0.2
 abstract:           Parameters Normalization plugin for Dancer
 author:  []
 license:            perl
