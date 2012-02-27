@@ -23,7 +23,7 @@ my %module_build_args = (
     "Damien \"dams\" Krotkine"
   ],
   "dist_name" => "Dancer-Plugin-Params-Normalization",
-  "dist_version" => "0.50",
+  "dist_version" => "0.51",
   "license" => "perl",
   "module_name" => "Dancer::Plugin::Params::Normalization",
   "recommends" => {},

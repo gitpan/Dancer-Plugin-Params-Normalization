@@ -22,10 +22,10 @@ name: Dancer-Plugin-Params-Normalization
 provides:
   Dancer::Plugin::Params::Normalization:
     file: lib/Dancer/Plugin/Params/Normalization.pm
-    version: 0.50
+    version: 0.51
   Dancer::Plugin::Params::Normalization::Abstract:
     file: lib/Dancer/Plugin/Params/Normalization/Abstract.pm
-    version: 0.50
+    version: 0.51
 requires:
   Dancer: 1.3001
   Dancer::Engine: 0
@@ -36,4 +36,4 @@ requires:
 resources:
   homepage: http://search.cpan.org/dist/Dancer-Plugin-Params-Normalization
   repository: http://github.com/dams/Dancer-Plugin-Params-Normalization
-version: 0.50
+version: 0.51

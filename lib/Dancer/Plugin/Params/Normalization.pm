@@ -8,7 +8,7 @@
 #
 package Dancer::Plugin::Params::Normalization;
 {
-  $Dancer::Plugin::Params::Normalization::VERSION = '0.50';
+  $Dancer::Plugin::Params::Normalization::VERSION = '0.51';
 }
 
 # ABSTRACT: A plugin for normalizing query parameters in Dancer
@@ -69,7 +69,7 @@ if (defined $conf->{method} && $conf->{method} ne 'passthrough') {
         # using a custom normalization is incompatible with params filters
         defined $conf->{params_filter}
           and die "your configuration contains a 'params_filter' fields, and a custom 'method' normalization class name. The two fields are incompatible";
-        # todo : use *method = \&{$class->normalize} or seomthin'
+        # todo : use *method = \&{$class->normalize} or somethin'
         $method = sub { $instance->normalize($_[0]) };
     }
 
@@ -86,7 +86,7 @@ if (defined $conf->{method} && $conf->{method} ne 'passthrough') {
     my $params_type_route = delete $params_types{route};
     keys %params_types
       and die "your configuration contains '" . join(', ', keys %params_types) .
-        "' as 'params_types' field(s), but only these ar allowed : 'query', 'body', 'route'";
+        "' as 'params_types' field(s), but only these are allowed : 'query', 'body', 'route'";
 
     $normalization_fonction = sub { 
         my ($new_query_params,
@@ -129,7 +129,7 @@ Dancer::Plugin::Params::Normalization - A plugin for normalizing query parameter
 
 =head1 VERSION
 
-version 0.50
+version 0.51
 
 =head1 DESCRIPTION
 
@@ -169,12 +169,12 @@ your main config.yml or environment config file.
     Params::Normalization:
       method: lowercase
 
-  # Example 1 : always uppercase all parameters
+  # Example 2 : always uppercase all parameters
   plugins:
     Params::Normalization:
       method: uppercase
 
-  # Example 1 : on-demand uppercase parameters that starts with 'a'
+  # Example 3 : on-demand uppercase parameters that starts with 'a'
   plugins:
     Params::Normalization:
       general_rule: ondemand

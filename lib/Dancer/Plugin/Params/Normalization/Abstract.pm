@@ -8,7 +8,7 @@
 #
 package Dancer::Plugin::Params::Normalization::Abstract;
 {
-  $Dancer::Plugin::Params::Normalization::Abstract::VERSION = '0.50';
+  $Dancer::Plugin::Params::Normalization::Abstract::VERSION = '0.51';
 }
 use strict;
 use warnings;
@@ -45,7 +45,7 @@ Dancer::Plugin::Params::Normalization::Abstract - class for custom parameters no
 
 =head1 VERSION
 
-version 0.50
+version 0.51
 
 =head1 DESCRIPTION
 
