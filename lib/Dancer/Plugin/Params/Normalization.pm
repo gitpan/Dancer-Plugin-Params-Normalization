@@ -1,10 +1,20 @@
+#
+# This file is part of Dancer-Plugin-Params-Normalization
+#
+# This software is copyright (c) 2011 by Damien "dams" Krotkine.
+#
+# This is free software; you can redistribute it and/or modify it under
+# the same terms as the Perl 5 programming language system itself.
+#
 package Dancer::Plugin::Params::Normalization;
+{
+  $Dancer::Plugin::Params::Normalization::VERSION = '0.50';
+}
+
+# ABSTRACT: A plugin for normalizing query parameters in Dancer
 
 use Dancer ':syntax';
 use Dancer::Plugin;
-
-our $AUTHORITY = 'DAMS';
-our $VERSION = '0.4';
 
 my $conf = plugin_setting;
 
@@ -100,22 +110,30 @@ if (defined $conf->{general_rule}) {
     if ($conf->{general_rule} eq 'ondemand') {
         register normalize => sub{ $normalization_fonction->() };
     } else {
-        before $normalization_fonction;
+        hook before => $normalization_fonction;
     }
 } else {
-    before $normalization_fonction;
+    hook before => $normalization_fonction;
 }
 
 register_plugin;
 
 1;
-__END__
+
 
 =pod
 
 =head1 NAME
 
-Dancer::Plugin::Params::Normalization - A plugin for normalizing query parameters in Dancer.
+Dancer::Plugin::Params::Normalization - A plugin for normalizing query parameters in Dancer
+
+=head1 VERSION
+
+version 0.50
+
+=head1 DESCRIPTION
+
+This plugin helps you normalize the query parameters in Dancer.
 
 =head1 SYNOPSYS
 
@@ -140,10 +158,6 @@ Requests
 
   # This will work, as NAME will be lowercased to name
   curl http://mywebservice/test?NAME=John
-
-=head1 DESCRIPTION
-
-This plugin helps you normalize the query parameters in Dancer.
 
 =head1 CONFIGURATION
 
@@ -254,7 +268,7 @@ If present in the array, the parameters from the route definition will be normal
 =back
 
 B<Default value>: [ 'query', 'body']
- 
+
 =head2 params_filter
 
 Optional, used to filters which parameters the normalization should apply to.
@@ -290,16 +304,23 @@ C<Param>, they will be both normalized to C<param>, which leads to a conflict.
 You can avoid the warning being issued by adding the configuration key
 C<no_conflict_warn> to a true value.
 
-=head1 LICENCE
-
-This module is released under the same terms as Perl itself.
-
-=head1 AUTHORS
-
-This module has been written by Damien Krotkine <dams@cpan.org>.
-
 =head1 SEE ALSO
 
 L<Dancer>
 
+=head1 AUTHOR
+
+Damien "dams" Krotkine
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2011 by Damien "dams" Krotkine.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
+
 =cut
+
+
+__END__
+

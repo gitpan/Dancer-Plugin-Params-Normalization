@@ -13,16 +13,16 @@ plan tests => 1;
     BEGIN {
         set plugins => {
             'Params::Normalization' => {
-                method => 'uppercase',
+                method => 'ucfirst',
             },
         };
     }
     use Dancer::Plugin::Params::Normalization;
 
     get '/foo' => sub {
-		return params->{TEST};
+		return params->{TeSt};
     };
 }
 
-my $response = dancer_response GET => '/foo', { params => {test => 5 } };
+my $response = dancer_response GET => '/foo', { params => {teSt => 5 } };
 is($response->{content}, 5);

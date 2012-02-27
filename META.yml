@@ -1,23 +1,39 @@
---- #YAML:1.0
-name:               Dancer-Plugin-Params-Normalization
-version:            0.4
-abstract:           Parameters Normalization plugin for Dancer
-author:  []
-license:            perl
-distribution_type:  module
-configure_requires:
-    ExtUtils::MakeMaker:  0
+---
+abstract: 'A plugin for normalizing query parameters in Dancer'
+author:
+  - "Damien \"dams\" Krotkine"
 build_requires:
-    Test::More:  0.87
-requires:
-    Dancer:  1.178_01
-resources:
-    repository:  http://github.com/sukria/Dancer-Plugin-Params-Normalization
-no_index:
-    directory:
-        - t
-        - inc
-generated_by:       ExtUtils::MakeMaker version 6.56
+  Dancer::Test: 0
+  File::Find: 0
+  File::Temp: 0
+  FindBin: 0
+  Module::Build: 0.3601
+  Test::More: 0
+configure_requires:
+  ExtUtils::MakeMaker: 6.30
+  Module::Build: 0.3601
+dynamic_config: 0
+generated_by: 'Dist::Zilla version 4.300007, CPAN::Meta::Converter version 2.120351'
+license: perl
 meta-spec:
-    url:      http://module-build.sourceforge.net/META-spec-v1.4.html
-    version:  1.4
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
+name: Dancer-Plugin-Params-Normalization
+provides:
+  Dancer::Plugin::Params::Normalization:
+    file: lib/Dancer/Plugin/Params/Normalization.pm
+    version: 0.50
+  Dancer::Plugin::Params::Normalization::Abstract:
+    file: lib/Dancer/Plugin/Params/Normalization/Abstract.pm
+    version: 0.50
+requires:
+  Dancer: 1.3001
+  Dancer::Engine: 0
+  Dancer::Plugin: 0
+  base: 0
+  strict: 0
+  warnings: 0
+resources:
+  homepage: http://search.cpan.org/dist/Dancer-Plugin-Params-Normalization
+  repository: http://github.com/dams/Dancer-Plugin-Params-Normalization
+version: 0.50

@@ -1,6 +1,13 @@
-Dancer::Plugin::Params::Normalization
 
-A Dancer plugin to normalize query parameters, like converting to lowercase,
-uppercase, or any other transformation.
+
+This archive contains the distribution Dancer-Plugin-Params-Normalization,
+version 0.50:
+
+  A plugin for normalizing query parameters in Dancer
+
+This software is copyright (c) 2011 by Damien "dams" Krotkine.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
 
 

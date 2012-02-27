@@ -1,48 +1,64 @@
-use ExtUtils::MakeMaker;
 
-WriteMakefile1(
-    NAME         => 'Dancer::Plugin::Params::Normalization',
-    ABSTRACT     => "Parameters Normalization plugin for Dancer",
-    LICENSE      => 'perl',
-    VERSION_FROM => 'lib/Dancer/Plugin/Params/Normalization.pm',
-    
-    META_MERGE => {
-        resources => {
-            repository => 'http://github.com/sukria/Dancer-Plugin-Params-Normalization',
-        },
-    },
+use strict;
+use warnings;
 
-    BUILD_REQUIRES => {
-        'Test::More' => '0.87',
-    },
 
-    PREREQ_PM => {
-        'Dancer' => '1.178_01',
-    },
 
-    test => {TESTS => join( ' ', (glob( 't/*.t'), glob('t/*/*.t')))},
+use ExtUtils::MakeMaker 6.30;
+
+
+
+my %WriteMakefileArgs = (
+  "ABSTRACT" => "A plugin for normalizing query parameters in Dancer",
+  "AUTHOR" => "Damien \"dams\" Krotkine",
+  "BUILD_REQUIRES" => {
+    "Dancer::Test" => 0,
+    "File::Find" => 0,
+    "File::Temp" => 0,
+    "FindBin" => 0,
+    "Module::Build" => "0.3601",
+    "Test::More" => 0
+  },
+  "CONFIGURE_REQUIRES" => {
+    "ExtUtils::MakeMaker" => "6.30",
+    "Module::Build" => "0.3601"
+  },
+  "DISTNAME" => "Dancer-Plugin-Params-Normalization",
+  "EXE_FILES" => [],
+  "LICENSE" => "perl",
+  "NAME" => "Dancer::Plugin::Params::Normalization",
+  "PREREQ_PM" => {
+    "Dancer" => "1.3001",
+    "Dancer::Engine" => 0,
+    "Dancer::Plugin" => 0,
+    "base" => 0,
+    "strict" => 0,
+    "warnings" => 0
+  },
+  "VERSION" => "0.50",
+  "test" => {
+    "TESTS" => "t/*.t"
+  }
 );
 
-sub WriteMakefile1 {  #Written by Alexandr Ciornii, version 0.21. Added by eumm-upgrade.
-    my %params=@_;
-    my $eumm_version=$ExtUtils::MakeMaker::VERSION;
-    $eumm_version=eval $eumm_version;
-    die "EXTRA_META is deprecated" if exists $params{EXTRA_META};
-    die "License not specified" if not exists $params{LICENSE};
-    if ($params{BUILD_REQUIRES} and $eumm_version < 6.5503) {
-        #EUMM 6.5502 has problems with BUILD_REQUIRES
-        $params{PREREQ_PM}={ %{$params{PREREQ_PM} || {}} , %{$params{BUILD_REQUIRES}} };
-        delete $params{BUILD_REQUIRES};
-    }
-    delete $params{CONFIGURE_REQUIRES} if $eumm_version < 6.52;
-    delete $params{MIN_PERL_VERSION} if $eumm_version < 6.48;
-    delete $params{META_MERGE} if $eumm_version < 6.46;
-    delete $params{META_ADD} if $eumm_version < 6.46;
-    delete $params{LICENSE} if $eumm_version < 6.31;
-    delete $params{AUTHOR} if $] < 5.005;
-    delete $params{ABSTRACT_FROM} if $] < 5.005;
-    delete $params{BINARY_LOCATION} if $] < 5.005;
 
-    WriteMakefile(%params);
+unless ( eval { ExtUtils::MakeMaker->VERSION(6.56) } ) {
+  my $br = delete $WriteMakefileArgs{BUILD_REQUIRES};
+  my $pp = $WriteMakefileArgs{PREREQ_PM};
+  for my $mod ( keys %$br ) {
+    if ( exists $pp->{$mod} ) {
+      $pp->{$mod} = $br->{$mod} if $br->{$mod} > $pp->{$mod};
+    }
+    else {
+      $pp->{$mod} = $br->{$mod};
+    }
+  }
 }
+
+delete $WriteMakefileArgs{CONFIGURE_REQUIRES}
+  unless eval { ExtUtils::MakeMaker->VERSION(6.52) };
+
+WriteMakefile(%WriteMakefileArgs);
+
+
 
