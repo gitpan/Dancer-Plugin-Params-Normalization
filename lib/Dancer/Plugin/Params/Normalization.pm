@@ -8,7 +8,7 @@
 #
 package Dancer::Plugin::Params::Normalization;
 {
-  $Dancer::Plugin::Params::Normalization::VERSION = '0.51';
+  $Dancer::Plugin::Params::Normalization::VERSION = '0.52';
 }
 
 # ABSTRACT: A plugin for normalizing query parameters in Dancer
@@ -120,6 +120,7 @@ register_plugin;
 
 1;
 
+__END__
 
 =pod
 
@@ -129,7 +130,7 @@ Dancer::Plugin::Params::Normalization - A plugin for normalizing query parameter
 
 =head1 VERSION
 
-version 0.51
+version 0.52
 
 =head1 DESCRIPTION
 
@@ -234,6 +235,9 @@ C<normalize>. this method takes in argument a hashref of the parameters, and
 returns a hashrefs of the normalized parameters. It can have an C<init> method
 if it requires initialization.
 
+As an example, see C<Dancer::Plugin::Params::Normalization::Trim>, contributed
+by Sam Batschelet, and part of this distribution.
+
 Using a custom normalization is incompatible with C<params_filter> (see below).
 
 =item passthrough
@@ -320,7 +324,3 @@ This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-
-
-__END__
-

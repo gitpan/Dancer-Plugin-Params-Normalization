@@ -8,7 +8,7 @@
 #
 package Dancer::Plugin::Params::Normalization::Abstract;
 {
-  $Dancer::Plugin::Params::Normalization::Abstract::VERSION = '0.51';
+  $Dancer::Plugin::Params::Normalization::Abstract::VERSION = '0.52';
 }
 use strict;
 use warnings;
@@ -35,7 +35,7 @@ sub normalize {
 
 1;
 
-
+__END__
 
 =pod
 
@@ -45,7 +45,7 @@ Dancer::Plugin::Params::Normalization::Abstract - class for custom parameters no
 
 =head1 VERSION
 
-version 0.51
+version 0.52
 
 =head1 DESCRIPTION
 
@@ -95,7 +95,3 @@ This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-
-
-__END__
-
